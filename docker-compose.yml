@@ -1,10 +1,9 @@
 ---
 - hosts: mansos
-  become: True
-  tasks:
-    - name: Install Docker
-      gather_facts: No
-      hosts: 
+  become: true
+    # - name: Install Docker
+      # gather_facts: No
+      # hosts: mansos
     
       tasks:
         - name: Install yum utils
