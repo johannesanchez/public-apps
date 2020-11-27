@@ -1,0 +1,11 @@
+---
+- name: install net-tools on servers
+  hosts: sosman
+  # remote_user: root
+
+  tasks:
+  - name: install net-tools on servers
+    yum:
+      name: net-tools
+      state: latest 
+
