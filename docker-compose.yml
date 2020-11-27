@@ -1,6 +1,6 @@
 ---
-- name: Docker and docker-compose
-  hosts: mansos
+- name: Install docker and docker-compose
+  hosts: sosman
     # become: true
     # - name: Install Docker
       # gather_facts: No
