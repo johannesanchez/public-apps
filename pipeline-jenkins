@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM Checkout') {
+            steps {
+//                git 'https://github.com/johannesanchez/public-apps.git'
+                git branch: 'main', credentialsId: '87643f40-5d2f-4036-96bf-f118dfb8b4f3', url: 'https://github.com/johannesanchez/public-apps.git'
+            }
+        }
+        stage('Execute Ansible docker-compose playbook') {
+            steps {
+                ansiblePlaybook become: true, credentialsId: 'ssh-mansos-ccca', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.inv', playbook: 'docker-compose.yml'
+            }
+        }
+    }
+}
