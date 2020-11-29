@@ -51,4 +51,17 @@
           yum:
             name: git
             state: latest
+        
+        - name: Create Directory /data
+          file:
+            path: /data
+            state: directory
+            mode: '0755'
+          
+        - name: Clone a repo with separate git directory
+          git:
+            repo: https://github.com/johannesanchez/public-apps.git
+            dest: /services
+            separate_git_dir: /services/public-apps.git
+
 
