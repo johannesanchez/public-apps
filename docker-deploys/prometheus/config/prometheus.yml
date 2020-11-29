@@ -1,0 +1,52 @@
+global:
+    scrape_interval:        15s
+    evaluation_interval:    15s
+    external_labels:
+        monitor: 'customer-monitor'
+
+scrape_configs:
+    - job_name: 'prometheus'
+      scrape_interval: 5s
+      static_configs:
+        - targets: ['localhost:9090']
+
+#################
+# Node Exporter #
+#################
+
+    - job_name:        'node_exporter_customer' #you can modify
+      scrape_interval: 5s
+      static_configs:
+        - targets: ['172.17.0.1:9100']  #you can modify
+          labels:
+            group: 'node_exporter'
+            #    - job_name: node_exporter_prtg
+            #scrape_interval: 5s
+            #static_configs: 
+            #- targets: ["IP_TO_SCRAPE:9182"]
+    # - job_name:         node_exporter_prtg
+    #     scrape_interval: 5s
+    #     static_configs:
+    #       - targets: ['IP_TO_SCRAPE:9182']  #you can modify
+
+
+# #snmp exporter to develop
+# #################
+# # SNMP Exporter #
+# #################
+#   - job_name: 'snmp'
+#     static_configs:
+#       - targets:
+#         - IP_TARGET  # SNMP device.
+#     metrics_path: /snmp
+#     params:
+#       module: [if_mib]
+#     relabel_configs:
+#       - source_labels: [__address__]
+#         target_label: __param_target
+#       - source_labels: [__param_target]
+#         target_label: instance
+#       - target_label: __address__
+#         replacement: 127.0.0.1:9116  # The SNMP exporter's real hostname:port.
+
+#         # windows_logical_disk_free_bytes{group="wserver.balinera.local",instance="192.168.0.180:9182",job="balinera-node_exporter",volume="C:"}root@jsanchez-SOSIngenieria:/var/www/html/docker/prometheus# 
