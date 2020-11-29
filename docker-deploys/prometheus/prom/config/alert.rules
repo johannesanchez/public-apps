@@ -1,6 +1,0 @@
-groups:
-        - name: astk1.sos.local
-          rules:
-                  - alert: InstanceDown
-                    expr: up == 0
-                    for: 20s
