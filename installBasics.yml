@@ -52,9 +52,9 @@
             name: git
             state: latest
         
-        - name: Create Directory /data
+        - name: Create Directory /services/data
           file:
-            path: /data
+            path: /services/data
             state: directory
             mode: '0755'
           
