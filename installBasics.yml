@@ -61,7 +61,7 @@
         - name: Clone a repo with separate git directory
           git:
             repo: https://github.com/johannesanchez/public-apps.git
-            dest: /services
-            separate_git_dir: /services/public-apps.git
+            dest: /services/containers
+            separate_git_dir: /services/containers/public-apps.git
 
 
