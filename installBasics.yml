@@ -57,6 +57,11 @@
             path: /services/data
             state: directory
             mode: '0755'
+        - name: Create Directory /services/data
+          file:
+            path: /services/containers
+            state: directory
+            mode: '0755'
           
         - name: Clone a repo with separate git directory
           git:
