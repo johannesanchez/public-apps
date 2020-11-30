@@ -8,9 +8,9 @@ services:
                 ports:
                         - 9090:9090
                 volumes:
-                        - /services/docker-deploys/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
+                        - /services/containers/public-apps/docker-deploys/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
                         # - /data/prom/config/alert.rules:/alertmanager/alert.rules
-                        - /data/prom/data:/prometheus
+                        - /services/data/prom/data:/prometheus
                           #                networks:
                           #                        - monitoring
                 # environment: 
@@ -21,21 +21,20 @@ services:
 #####
         # # snmp_exporter:
         # #         image: prom:snmp-generator
-        # alertmanager:
-        #         image: prom/alertmanager:v0.21.0
-        #         # build:
-        #         #         context: ./alertman
-        #         #         dockerfile: Dockerfile
-        #         ports:
-        #                 - 9093:9093
-        #         volumes:
-        #                 - ./alertman/alertmanager.yml:/alertmanager.yml
-        #                 # - /usr/src/docker/alertmanager/alertmanager.yml:/alertmanager.yml
-        #         command:
-        #                 - '--config.file=/alertmanager.yml'
-        #         container_name: alertman
-        #         hostname: alertman
-        #         restart: "no"
+        alertmanager:
+                image: prom/alertmanager:v0.21.0
+                # build:
+                #         context: ./alertman
+                #         dockerfile: Dockerfile
+                ports:
+                        - 9093:9093
+                volumes:
+                        - /services/containers/public-apps/docker-deploys/prometheus//alertman/alertmanager.yml:/alertmanager.yml
+                command:
+                        - '--config.file=/alertmanager.yml'
+                container_name: alertman
+                hostname: alertman
+                restart: "no"
         # grafana:
         #         depends_on:
         #                 - prom
