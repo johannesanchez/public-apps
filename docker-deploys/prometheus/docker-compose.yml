@@ -8,7 +8,7 @@ services:
                 ports:
                         - 9090:9090
                 volumes:
-                        - /services/containers/public-apps/docker-deploys/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
+                        - /services/containers/public-apps/docker-deploys/prometheus/prom/prometheus.yml:/etc/prometheus/prometheus.yml
                         # - /data/prom/config/alert.rules:/alertmanager/alert.rules
                         - /services/data/prom/data:/prometheus
                           #                networks:
@@ -29,7 +29,7 @@ services:
                 ports:
                         - 9093:9093
                 volumes:
-                        - /services/containers/public-apps/docker-deploys/prometheus//alertman/alertmanager.yml:/alertmanager.yml
+                        - /services/containers/public-apps/docker-deploys/prometheus/alertman/alertmanager.yml:/alertmanager.yml
                 command:
                         - '--config.file=/alertmanager.yml'
                 container_name: alertman

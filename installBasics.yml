@@ -57,7 +57,7 @@
             path: /services/data
             state: directory
             mode: '0755'
-        - name: Create Directory /services/data
+        - name: Create Directory /services/containers
           file:
             path: /services/containers
             state: directory
@@ -67,6 +67,6 @@
           git:
             repo: https://github.com/johannesanchez/public-apps.git
             dest: /services/containers
-            separate_git_dir: /services/containers/public-apps.git
+            # separate_git_dir: /services/containers/public-apps.git
 
 
